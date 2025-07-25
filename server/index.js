@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require("cors");   
+const cors = require("cors");
+const express = require('express');   
 const mongoose = require('mongoose');
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
@@ -16,7 +16,7 @@ mongoose
   .then(() => console.log("MongoDB is  connected successfully"))
   .catch((err) => console.error(err));
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log("server connected in port" + PORT);
 })
 
@@ -31,5 +31,7 @@ app.use(
   app.use(cookieParser());
 
   app.use(express.json());
+
+  // routes
 
   app.use("/", authRoute);
